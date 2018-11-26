@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'
-import routes from './routes'
+/*jshint esversion: 6 */
+import Vue from 'vue';
+import App from './App.vue';
+import VueRouter from 'vue-router';
+import routes from './routes';
 
 /*
 	vue-router installation and configuration
@@ -10,9 +11,10 @@ import routes from './routes'
 const router = new VueRouter({
   routes,
   mode: 'history'
-})
+});
 
-Vue.use(VueRouter)
+
+Vue.use(VueRouter);
 
 /*
   vue installation.
@@ -22,4 +24,6 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router
-})
+});
+
+export {router};

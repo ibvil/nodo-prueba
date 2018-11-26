@@ -1,26 +1,30 @@
 <template>
-  <div>
+  <div class="border-page">
     <h1 v-show="isLoading">
       Cargando personajes ...
     </h1>
-    <table v-show="!isLoading">
-      <tr>
-        <th>Nombre</th>
-        <th>Casa</th>
-        <th>Detalle</th>
-      </tr>
-      <tr v-for="character in characters">
-        <td>{{ character.name }}</td>
-        <td>{{ character.house }}</td>
-        <td> <button @click="goToDetail(character._id)">Ver detalle</button> </td>
-      </tr>
-    </table>
+    <div v-show="!isLoading">
+      <h1 class="center">Listado de Personajes</h1>
+      <table >
+        <tr >
+          <td class="bg-title" height="25">Nombre</td>
+          <td class="bg-title" height="25">Casa</td>
+          <td class="bg-title" height="25">Detalle</td>
+        </tr>
+        <tr v-for="character in characters">
+          <td>{{ character.name }}</td>
+          <td>{{ character.house }}</td>
+          <td> <button @click="goToDetail(character._id)">Ver detalle</button> </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
 
 <script>
   import { listsAllCharacters } from '../services/got.service.js'
+  import { router } from '../main'
 
   export default {
     name: 'list-component',
@@ -58,22 +62,46 @@
        * @method goToDetail
        */
       goToDetail(id) {
-        // CODE HERE
+        router.push({ name: "detail", params: { id: id } });
       }
     }
   }
 </script>
 <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    color: #002642;
+  }
+
+  .border-page {
+    border: 2px solid #dddddd;
+    margin: 10px;
+    padding: 10px 15px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .bg-title {
+    background-color: #002642;
+    color: #FDFFFC;
+    padding: 2px 0px;
+    text-align: center;
+  }
+
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
 
-  td, th {
+  td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    font-size: 14pt;
   }
 
   tr:nth-child(even) {
