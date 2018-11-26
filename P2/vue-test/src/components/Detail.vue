@@ -16,7 +16,7 @@
                         </td>
                     </tr>
                     <div v-if="image">
-                      <img v-bind:src="image">
+                      <img v-bind:src="image" height='400'>
                     </div>
                     <div v-else>
                       Sin imagen disponible
@@ -32,38 +32,38 @@
                           </td>
                       </tr>
                       <tr>
-                          <td colspan="2" height="20"></td>
+                          <td colspan="2"></td>
                       </tr>
                       <tr>
-                          <td width="200" height="25" valign="top">Nombre</td>
+                          <td width="200" valign="top">Nombre</td>
                           <td valign="top">{{character.name}}</td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Fecha de Nacimiento</td>
+                          <td valign="top">Fecha de Nacimiento</td>
                           <td valign="top"><span v-if="character.dateOfBirth">{{character.dateOfBirth}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Fecha de Fallecimiento</td>
+                          <td valign="top">Fecha de Fallecimiento</td>
                           <td valign="top"><span v-if="character.dateOfDeath">{{character.dateOfDeath}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Sexo</td>
+                          <td valign="top">Sexo</td>
                           <td valign="top"><span v-if="character.male">Masculino</span> <span v-else>Femenino</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Cultura</td>
+                          <td valign="top">Cultura</td>
                           <td valign="top"><span v-if="character.culture">{{character.culture}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Casa</td>
+                          <td valign="top">Casa</td>
                           <td valign="top"><span v-if="character.house">{{character.house}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr >
-                          <td height="25" valign="top">Títulos</td>
+                          <td valign="top">Títulos</td>
                           <td valign="top"><span v-for="(title, index) in character.titles">{{index+1}} - {{ title }}<br></span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Libros</td>
+                          <td valign="top">Libros</td>
                           <td valign="top"><span v-for="(book, index) in character.books">{{index+1}} - {{book}}<br></span></td>
                       </tr>
                   </table>
@@ -81,34 +81,34 @@
                           </td>
                       </tr>
                       <tr>
-                          <td colspan="2" height="20"></td>
+                          <td colspan="2"></td>
                       </tr>
                       <tr>
-                          <td width="200" height="25" valign="top">Lema</td>
+                          <td width="200" valign="top">Lema</td>
                           <td valign="top">{{house.words}}</td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Título</td>
+                          <td valign="top">Título</td>
                           <td valign="top"><span v-if="house.title">{{house.title}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Región</td>
+                          <td valign="top">Región</td>
                           <td valign="top"><span v-if="house.region">{{house.region}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Escudo de Armas</td>
+                          <td valign="top">Escudo de Armas</td>
                           <td valign="top"><span v-if="house.coatOfArms">{{house.coatOfArms}}</span> <span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Líder Actual</td>
+                          <td valign="top">Líder Actual</td>
                           <td valign="top"><span v-if="house.currentLord != 'unknown'">{{house.currentLord}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr>
-                          <td height="25" valign="top">Casa Mandante</td>
+                          <td valign="top">Casa Mandante</td>
                           <td valign="top"><span v-if="house.overlord">{{house.overlord}}</span><span v-else>Sin información</span></td>
                       </tr>
                       <tr >
-                          <td height="25" valign="top">Arma Ancestral</td>
+                          <td valign="top">Arma Ancestral</td>
                           <td valign="top"><span v-for="(weapon, index) in house.ancestralWeapon">{{index+1}} - {{ weapon }}<br></span></td>
                       </tr>
                   </table>
@@ -122,7 +122,7 @@
                           </td>
                       </tr>
                       <div v-if="houseImage">
-                        <img v-bind:src="houseImage">
+                        <img v-bind:src="houseImage" height='400'>
                       </div>
                       <div v-else>
                         Sin imagen disponible
@@ -206,7 +206,7 @@
   }
 
   .border-page {
-    border: 2px solid #dddddd;
+    border: 2px solid #002642;
     margin: 10px;
     padding: 10px 15px;
   }
@@ -215,20 +215,26 @@
     text-align: center;
   }
 
-  .bg-header h1 {
-    font-size: 16pt;
-  }
-
   .bg-title {
     background-color: #002642;
     color: #FDFFFC;
-    padding: 2px 0px;
+    padding: 4px 0px;
     text-align: center;
+    font-size: 18px;
   }
 
-  .text {
-    font-size: 14pt;
+  table {
+    border-collapse: collapse;
+    width: 100%;
   }
+
+  td {
+    border: 1px solid #a0a0a0;
+    text-align: left;
+    padding: 8px;
+    font-size: 16px;
+  }
+
   tr:nth-child(even) {
     background-color: #dddddd;
   }

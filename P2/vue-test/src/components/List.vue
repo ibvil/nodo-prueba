@@ -7,11 +7,14 @@
       <h1 class="center">Listado de Personajes</h1>
       <table >
         <tr >
-          <td class="bg-title" height="25">Nombre</td>
-          <td class="bg-title" height="25">Casa</td>
-          <td class="bg-title" height="25">Detalle</td>
+          <td class="bg-title">Nombre</td>
+          <td class="bg-title">Casa</td>
+          <td class="bg-title">Detalle</td>
         </tr>
-        <tr v-for="character in characters">
+        <tr>
+          <td colspan="3"><input type="text" v-model="search" placeholder=" Buscar personaje por su nombre..."/></td>
+        </tr>
+        <tr v-for="character in personajesFiltrados">
           <td>{{ character.name }}</td>
           <td>{{ character.house }}</td>
           <td> <button @click="goToDetail(character._id)">Ver detalle</button> </td>
@@ -35,6 +38,7 @@
     data () {
       return {
         characters: [],
+        search:'',
         isLoading: false
       }
     },
@@ -49,6 +53,13 @@
           this.characters = res
           this.isLoading = false
         })
+    },
+    computed: {
+      personajesFiltrados:function(){
+        return this.characters.filter( character => {
+          return character.name.toLowerCase().match(this.search.toLowerCase());
+        })
+      }
     },
 
     /**
@@ -68,6 +79,7 @@
   }
 </script>
 <style>
+
   body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 200;
@@ -75,7 +87,7 @@
   }
 
   .border-page {
-    border: 2px solid #dddddd;
+    border: 2px solid #002642;
     margin: 10px;
     padding: 10px 15px;
   }
@@ -87,24 +99,29 @@
   .bg-title {
     background-color: #002642;
     color: #FDFFFC;
-    padding: 2px 0px;
+    padding: 4px 0px;
     text-align: center;
+    font-size: 18px;
   }
 
   table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
 
+  input {
+    width: 100%;
+  }
+
   td {
-    border: 1px solid #dddddd;
+    border: 1px solid #a0a0a0;
     text-align: left;
     padding: 8px;
-    font-size: 14pt;
+    font-size: 16px;
   }
 
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
 </style>
